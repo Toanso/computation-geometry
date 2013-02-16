@@ -76,4 +76,11 @@ public class Vector2d {
     public double crossProduct(Vector2d v) {
         return getX() * v.getY() - v.getX() * getY();
     }
+
+    public double angle(Vector2d v){
+        return Math.acos(this.dot(v)/(this.length()*v.length()));
+    }
+    
+    
+    
 }

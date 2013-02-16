@@ -1,5 +1,6 @@
 package utils;
 
+import data.Circle;
 import data.Point2d;
 import data.Triangle;
 import data.Vector2d;
@@ -10,6 +11,10 @@ import data.Vector2d;
  *
  */
 public class GeometryUtils {
+    public static final double EPS = 1e-6;
+    
+    private GeometryUtils(){}
+    
     /**
      * test whether a point is on the given line segment
      * @param p1
@@ -18,7 +23,7 @@ public class GeometryUtils {
      * @param Q point 
      * @return
      */
-    public boolean onSegment(Point2d p1, Point2d p2, Point2d Q){
+    public static boolean onSegment(Point2d p1, Point2d p2, Point2d Q){
         
         
         if(Q.sub(p1).crossProduct(p2.sub(p1))== 0
@@ -30,12 +35,12 @@ public class GeometryUtils {
         return false;
     }
     /**
-     * test whether a point is in the given Triangle
+     * test whether a point is within a given Triangle
      * @param t
      * @param P
      * @return
      */
-    public boolean inTriangle(Triangle t, Point2d P){
+    public static boolean inTriangle(Triangle t, Point2d P){
         Vector2d AB = new Vector2d(t.A, t.B);
         Vector2d AC = new Vector2d(t.A, t.C);
         Vector2d PA = new Vector2d(P, t.A);
@@ -47,6 +52,64 @@ public class GeometryUtils {
         double spbc = Math.abs(PB.crossProduct(PC));
         double sabc = Math.abs(AB.crossProduct(AC));
         if(sabc == spab + spac + spbc) return true;
+        return false;
+    }
+    /**
+     * test whether a point is within a given polygon
+     * 
+     * @param points
+     * @param P
+     * @return
+     */
+    public static boolean inPolygon(Point2d[] points, Point2d P){
+        int len = points.length;
+        double angle = 0;
+        for(int i=0; i<len; i++){
+            Vector2d v1 = new Vector2d(P, points[i]);
+            Vector2d v2 = new Vector2d(P, points[(i+1)%len]);
+            angle+= v1.angle(v2);
+        }
+        if(Math.abs(angle-Math.PI) <= EPS)
+            return true;
+        return false;
+    }
+    /**
+     * test whether a point is within a given circle
+     * @param c
+     * @param p
+     * @return
+     */
+    public static boolean inCircle(Circle c, Point2d p){
+        Vector2d v = new Vector2d(p, c.center);
+        double len = v.length();
+        if(Math.abs(len-c.radius)<=EPS)
+            return true;
+        return false;
+    }
+    
+    public static boolean segmentIntersect(Point2d p1, Point2d p2, Point2d p3, Point2d p4){
+        Vector2d p12 = new Vector2d(p1, p2);
+        Vector2d p34 = new Vector2d(p3, p4);
+        
+        Vector2d p13 = new Vector2d(p1, p3);
+        Vector2d p14 = new Vector2d(p1, p4);
+        
+        Vector2d p31 = new Vector2d(p3, p1);
+        Vector2d p32 = new Vector2d(p3, p4);
+        
+        double d1 = p12.crossProduct(p13);
+        double d2 = p12.crossProduct(p14);
+        double d3 = p34.crossProduct(p31);
+        double d4 = p34.crossProduct(p32);
+        
+        if(d1*d2 < 0 && d3*d4 < 0) return true;
+        
+        
+        
+        
+        
+        
+        
         return false;
     }
     
