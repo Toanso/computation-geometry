@@ -86,7 +86,14 @@ public class GeometryUtils {
             return true;
         return false;
     }
-    
+    /**
+     * test whether two line segment intersect with each other
+     * @param p1
+     * @param p2
+     * @param p3
+     * @param p4
+     * @return
+     */
     public static boolean segmentIntersect(Point2d p1, Point2d p2, Point2d p3, Point2d p4){
         Vector2d p12 = new Vector2d(p1, p2);
         Vector2d p34 = new Vector2d(p3, p4);
@@ -103,15 +110,10 @@ public class GeometryUtils {
         double d4 = p34.crossProduct(p32);
         
         if(d1*d2 < 0 && d3*d4 < 0) return true;
-        
-        
-        
-        
-        
-        
-        
+        if(d1==0 && onSegment(p1, p2, p3)) return true;
+        if(d2==0 && onSegment(p1, p2, p4)) return true;
+        if(d3==0 && onSegment(p3, p4, p1)) return true;
+        if(d4==0 && onSegment(p3, p4, p2)) return true;
         return false;
     }
-    
-
 }
