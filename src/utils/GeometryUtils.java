@@ -116,4 +116,10 @@ public class GeometryUtils {
         if(d4==0 && onSegment(p3, p4, p2)) return true;
         return false;
     }
+    //
+    // how to calculate intersection of two polygon and union polygon
+    // how to calculate convex hull
+    // segment line intersection point
+    // boolean segment set has intersection
+    // how to calculate half plane intersection
 }
