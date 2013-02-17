@@ -20,6 +20,7 @@ public class Triangle {
         B = new Point2d(t.B);
         C = new Point2d(t.C);
     }
+    
     /**
      * calculate area of the triangle
      * @return

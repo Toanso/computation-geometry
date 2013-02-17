@@ -23,7 +23,8 @@ public class Polygon {
         for(int i=0; i<length; i++){
             this.points[i] = new Point2d(p.points[i]);
         }
-    }
+    } 
+    
     /**
      * calculate area of the polygon 
      * @return

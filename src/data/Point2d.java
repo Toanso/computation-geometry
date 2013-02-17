@@ -42,6 +42,7 @@ public class Point2d {
     public Point2d div(double k) {
         return new Point2d(x / k, y / k);
     }
+    
 
     public double crossProduct(Point2d p) {
         return x * p.y - p.x * y;

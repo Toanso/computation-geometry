@@ -27,4 +27,5 @@ public class Circle {
         this.center = new Point2d(c.center.x, c.center.y);
         this.radius = c.radius;
     }
+    
 }

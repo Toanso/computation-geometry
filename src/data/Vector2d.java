@@ -17,6 +17,7 @@ public class Vector2d {
         this.start = new Point2d();
         this.end = new Point2d();
     }
+    
     public Vector2d(Point2d start, Point2d end){
         this.start = new Point2d(start);
         this.end = new Point2d(end);

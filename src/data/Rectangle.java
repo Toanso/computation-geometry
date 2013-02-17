@@ -25,5 +25,7 @@ public class Rectangle {
         this.right = new Point2d(r.right);
         this.down = new Point2d(r.down);
     }
+    
 
+    
 }

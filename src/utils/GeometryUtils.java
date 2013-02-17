@@ -114,12 +114,14 @@ public class GeometryUtils {
         if(d2==0 && onSegment(p1, p2, p4)) return true;
         if(d3==0 && onSegment(p3, p4, p1)) return true;
         if(d4==0 && onSegment(p3, p4, p2)) return true;
+        
         return false;
     }
     //
-    // how to calculate intersection of two polygon and union polygon
-    // how to calculate convex hull
+    // how to calculate intersection of two polygon and union of two polygon
+    // how to calculate convex hull and the max distance between two points or min distance
     // segment line intersection point
     // boolean segment set has intersection
     // how to calculate half plane intersection
+    // Smallest circle covering problem
 }
